@@ -15,6 +15,10 @@ function ShoppingList() {
     setItems([...items, newItem]);
   }
 
+  function handleUpdateItem(updatedItem) {
+    console.log("in shopping cart: ", updatedItem);
+  }
+
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All") return true;
 
@@ -36,7 +40,7 @@ function ShoppingList() {
       />
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} item={item} />
+          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem} />
         ))}
       </ul>
     </div>
