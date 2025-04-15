@@ -20,7 +20,7 @@ function Item({ item, onUpdateItem, onDeleteItem }) {
       method: "DELETE",
     })
       .then((r) => r.json())
-      .then(() => onDeleteItem("deleted!"));
+      .then(() => onDeleteItem(item));
   }
   return (
     <li className={item.isInCart ? "in-cart" : ""}>

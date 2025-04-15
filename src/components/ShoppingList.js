@@ -46,6 +46,7 @@ function ShoppingList() {
     const updatedItems = items.filter((item) => item.id !== deletedItem.id);
     setItems(updatedItems);
   }
+
   return (
     <div className="ShoppingList">
       <ItemForm onAddItem={handleAddItem} />
