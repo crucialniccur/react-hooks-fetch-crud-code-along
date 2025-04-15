@@ -16,7 +16,14 @@ function ShoppingList() {
   }
 
   function handleUpdateItem(updatedItem) {
-    console.log("in shopping cart: ", updatedItem);
+    const updatedItems = items.map((item) => {
+      if (item.id === updatedItem.id) {
+        return updatedItem;
+      } else {
+        return item;
+      }
+    });
+    setItems(updatedItems);
   }
 
   const itemsToDisplay = items.filter((item) => {
@@ -31,6 +38,14 @@ function ShoppingList() {
       .then((items) => setItems(items));
   }, []);
 
+  function handleDeleteItem(deletedItem) {
+    console.log("In ShoppingCart:", deletedItem);
+  }
+
+  function handleDeleteItem(deletedItem) {
+    const updatedItems = items.filter((item) => item.id !== deletedItem.id);
+    setItems(updatedItems);
+  }
   return (
     <div className="ShoppingList">
       <ItemForm onAddItem={handleAddItem} />
@@ -40,7 +55,12 @@ function ShoppingList() {
       />
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem} />
+          <Item
+            key={item.id}
+            item={item}
+            onUpdateItem={handleUpdateItem}
+            onDeleteItem={handleDeleteItem}
+          />
         ))}
       </ul>
     </div>
