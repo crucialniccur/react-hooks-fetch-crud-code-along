@@ -1,6 +1,6 @@
 import React from "react";
 
-function Item({ item }) {
+function Item({ item, onUpdateItem }) {
   function handleAddToCartClick() {
     fetch(`http://localhost:4000/items/${item.id}`, {
       method: "PATCH",
@@ -12,7 +12,7 @@ function Item({ item }) {
       }),
     })
       .then((res) => res.json())
-      .then((updatedItem) => console.log(updatedItem));
+      .then((updatedItem) => onUpdateItem(updatedItem));
   }
   return (
     <li className={item.isInCart ? "in-cart" : ""}>
