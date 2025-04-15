@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemForm from "./ItemForm";
 import Filter from "./Filter";
 import Item from "./Item";
@@ -16,6 +16,12 @@ function ShoppingList() {
 
     return item.category === selectedCategory;
   });
+
+  useEffect(() => {
+    fetch("http://localhost:4000/items")
+      .then((res) => res.json())
+      .then((items) => console.log(items));
+  }, []);
 
   return (
     <div className="ShoppingList">
