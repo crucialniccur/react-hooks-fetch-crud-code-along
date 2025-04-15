@@ -6,8 +6,13 @@ function ItemForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("name :", name);
-    console.log("category :", category);
+    const itemData = {
+      name: name,
+      category: category,
+      isInCart: false,
+    };
+
+    console.log(itemData);
   }
 
   return (
